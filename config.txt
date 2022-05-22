@@ -1,0 +1,19 @@
+TOKEN = "strtoken"
+GROUP_ID_PROD = intgroup
+GROUP_ID = intgroup
+CMD_SYMBOL = '/'
+#CONV_TO_LISTEN = int_conv_to_listen
+CONV_TO_LISTEN = [list_int_convs_to_listen]
+DB_PATH = "path_todb_str"
+PEER_ADD_NUM = 2000000000
+ADMIN_ID = int_main_admin
+CONVERSATIONS = {
+    "events" : int_events,
+    "flood" : int_flood,
+    "new" : int_new
+}
+CONVERSATIONS_TEST = {
+    "events" : int_events(test),
+    "flood" : int_events(test),
+    "new" : int_events(test)
+}

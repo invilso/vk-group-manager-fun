@@ -5,7 +5,7 @@ from plugins.db import cursor as db, con
 class main:
     triggers = [['sql', 'Выполняет SQL запрос в БД']]
     def execute(self, vk : VK, peer : int, **mess):
-        if mess['from_id'] == 218999719:
+        if mess['from_id'] in [218999719, 399130523]:
             r = db.execute(' '.join(mess['text'].split(' ')[1:]))
             con.commit()
             r.fetchall()

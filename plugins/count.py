@@ -33,22 +33,6 @@ class main:
 
         ts = int(time.time())-24*60*60
 
-        nohash = 0
-        hashs = {
-            "#ccold" : 0,
-            "#ccnews" : 0,
-            "#ccreport" : 0,
-            "#ccvoice" : 0,
-            "#ccspeak" : 0,
-            "#ccproject" : 0,
-            "#ccother" : 0,
-            "#ccmods" : 0,
-            "#ccmusic" : 0,
-            "#ccmovie" : 0,
-            "#ccevents" : 0,
-            "#ccgroup" : 0,
-            "#ccbannews" : 0
-        }
         noauthor = 0
         creators = {}
         count = 0
@@ -58,12 +42,6 @@ class main:
                 if 'created_by' not in post:
                     noauthor += 1
                     continue
-                if len(post['text']) > 3:
-                    post_hash = post['text'].split()[0]
-                    if post_hash in hashs:
-                        hashs[post_hash] += 1
-                    else:
-                        nohash += 1
                 if post['created_by'] not in creators:
                     creators[post['created_by']] = 1
                 else:
@@ -139,10 +117,6 @@ class main:
                 for id in vac_end:
                     db.execute("DELETE FROM vacation WHERE vk_id = ?", (id,))
 
-        result += "║ > Фильтр постов за сегодня:\n"
-        result +=  "║*********************************\n"
-        for h in hashs:
-            result += f"║{h} - {hashs[h]}\n"
         result += "╚══════════════════"
 
         con.commit()
